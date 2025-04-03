@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import CountContext from './contexts/ContextCount';
+import PostList from './components/PostList';
+import PostHome from './components/PostHome';
+import PostCard from './components/postCard';
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+
+  const person = {
+    people: [
+      { name: 'John', age: 30, city: 'New York' },
+      { name: 'Jane', age: 25, city: 'Los Angeles' },
+      { name: 'Mike', age: 35, city: 'Chicago' },
+      { name: 'Sara', age: 28, city: 'Miami' },
+      { name: 'Tom', age: 40, city: 'Houston' },
+    ]
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CountContext.Provider value={{ person }}>
+        <PostHome />
+        <PostList />
+        <PostCard />
+      </CountContext.Provider>
     </>
   )
 }
-
-export default App
