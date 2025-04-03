@@ -6,7 +6,6 @@ import PostCard from './components/postCard';
 
 
 export default function App() {
-
   const person = {
     people: [
       { name: 'John', age: 30, city: 'New York' },
@@ -15,15 +14,15 @@ export default function App() {
       { name: 'Sara', age: 28, city: 'Miami' },
       { name: 'Tom', age: 40, city: 'Houston' },
     ]
-  }
+  };
+
+  console.log(person);
 
   return (
-    <>
-      <CountContext.Provider value={{ person }}>
-        <PostHome />
-        <PostList />
-        <PostCard />
-      </CountContext.Provider>
-    </>
-  )
+    <CountContext.Provider value={{ person }}>
+      <PostHome />
+      <PostList />
+      <PostCard />
+    </CountContext.Provider>
+  );
 }
